@@ -2,6 +2,7 @@ package ec.edu.ups.ppw63.ExamenJS.business;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import ec.edu.ups.ppw63.ExamenJS.dao.ClienteDao;
@@ -55,7 +56,9 @@ public class GestionDatos {
     private void realizarRecargaDemo() {
         try {
             RecargaMovilDTO recarga = new RecargaMovilDTO();
-            recarga.setNumeroMovil("0999999999");
+            recarga.setNumeroMovil("099837018");
+            recarga.setFecha(new Date());
+            recarga.setOperador("movistar");
             recarga.setMonto(10.0);
             recarga.setClienteId(1); 
 
@@ -69,14 +72,15 @@ public class GestionDatos {
         
         try {
             RecargaMovilDTO recarga = new RecargaMovilDTO();
-            recarga.setNumeroMovil("0999999998");
+            recarga.setNumeroMovil("0988226099");
+            recarga.setFecha(new Date());
+            recarga.setOperador("movistar");
             recarga.setMonto(10.0);
             recarga.setClienteId(3); 
 
-            System.out.println("Saldo antes de la recarga: " + daoCliente.read(3).getSaldo());
+            
             gestionClientes.procesarRecargaMovil(recarga);
-            System.out.println("Recarga móvil realizada con éxito");
-            System.out.println("Saldo después de la recarga: " + daoCliente.read(3).getSaldo());
+            
         } catch (Exception e) {
             System.err.println("Error al realizar recarga móvil: " + e.getMessage());
         }

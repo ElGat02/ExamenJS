@@ -51,27 +51,27 @@ public class GestionClientes {
 	
 	
 	public void procesarRecargaMovil(RecargaMovilDTO recargaMovilDTO) throws Exception {
-        // Validación de datos del DTO
+        
+		
         if (recargaMovilDTO.getMonto() <= 0) {
-            throw new Exception("El monto de la recarga debe ser positivo");
+            throw new Exception("El monto de la recarga no debe ser menor a 1");
         }
 
-        // Aquí podrías añadir lógica para validar el operador y el número de teléfono
-        // Por ejemplo, comprobar que el operador sea uno de los permitidos en tu sistema
+        
 
         Cliente cliente = daoCliente.read(recargaMovilDTO.getClienteId());
         if (cliente == null) {
             throw new Exception("Cliente no encontrado");
         }
 
-        // Lógica para procesar la recarga
-        // Aquí actualizamos el saldo del cliente con el monto de la recarga
+    
         double nuevoSaldo = cliente.getSaldo() + recargaMovilDTO.getMonto();
         cliente.setSaldo(nuevoSaldo);
 
-        // Guardamos los cambios en la base de datos
+        
         daoCliente.update(cliente);
     }
+	
 	
 	
 

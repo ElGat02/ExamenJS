@@ -1,10 +1,13 @@
 package ec.edu.ups.ppw63.ExamenJS.model;
 
+import java.util.Date;
+
 public class RecargaMovilDTO {
     private String numeroMovil;
     private String operador;  // Nuevo campo para el operador
     private double monto;
     private int clienteId;
+    private Date fecha;
 
     // Constructor, getters y setters
 
@@ -39,4 +42,16 @@ public class RecargaMovilDTO {
     public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	public void setFechaEmision(Date fecha) {
+		this.fecha = fecha;
+	}
 }

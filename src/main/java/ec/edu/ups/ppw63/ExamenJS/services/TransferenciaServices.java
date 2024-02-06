@@ -6,11 +6,11 @@ import ec.edu.ups.ppw63.ExamenJS.business.GestionClientes;
 import ec.edu.ups.ppw63.ExamenJS.model.RecargaMovilDTO;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
-
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
-
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
-
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 
 import jakarta.ws.rs.core.MediaType;
@@ -41,6 +41,25 @@ public class TransferenciaServices {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
         }
     }
+    
+    @PUT
+    @Path("/recargaMovil/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response actualizarRecargaMovil(@PathParam("id") int id, RecargaMovilDTO recargaMovilDTO) {
+        try {
+            
+            //gClientes.actualizarRecargaMovil(id, recargaMovilDTO);
+
+            ErrorMessage mensaje = new ErrorMessage(0, "Recarga actualizada con éxito");
+            return Response.ok(mensaje).build();
+        } catch (Exception e) {
+            ErrorMessage error = new ErrorMessage(99, e.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(error).build();
+        }
+    }
+    
+    
 
    
 
